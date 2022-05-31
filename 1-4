@@ -1,0 +1,130 @@
+import java.util.Scanner
+
+fun main() {
+    FirstTusk()
+    SecondTusk()
+    ThirdTusk()
+    FourthTusk()
+}
+
+fun FirstTusk() {
+    println("Первое задание")
+    val dictionarywords = mapOf("Яблоко" to 22, "Банан" to 12, "Кукуруза" to 48, "Вова" to 0)
+    while (true) {
+        val value = readLine()
+        if (value in dictionarywords) {
+            print(dictionarywords[value])
+        } else {
+            print("Такого не существует в словаре!")
+        }
+        if (value == "Конец") {
+            break
+        }
+    }
+
+}
+val integerChars = '0'..'9'
+fun SecondTusk() {
+    println("Второе задание")
+    val input = Scanner(System.`in`)
+    val myqueue : ArrayList<Int> = arrayListOf()
+    println("Введите кол-во чисел")
+    val count = input.nextInt()
+
+
+    for(n in 1..count)
+    {
+        val value:String = readLine().toString()
+        if(isNumber(value))
+        {
+            myqueue.add(value.toInt())
+        }
+        else
+        {
+            break
+        }
+
+    }
+    print(myqueue)
+}
+fun ThirdTusk()
+{
+    println("Третье задание")
+    val input = Scanner(System.`in`)
+    val myqueue : ArrayList<Int> = arrayListOf()
+    println("Введите кол-во чисел")
+    val count = input.nextInt()
+
+
+    for(n in 1..count)
+    {
+        val value:String = readLine().toString()
+        if(isNumber(value))
+        {
+            myqueue.add(value.toInt())
+        }
+        else
+        {
+            break
+        }
+
+    }
+
+    myqueue.reverse()
+    print(myqueue)
+}
+
+fun FourthTusk()
+{
+    val input = Scanner(System.`in`)
+    println("Четвёртое задание")
+    var uniqleobj : ArrayList<String> = arrayListOf("Кофе", "Молоко")
+    val firstbuyer : ArrayList<String> = arrayListOf()
+    val secondbuyer : ArrayList<String> = arrayListOf()
+    println("Введите кол-во продуктов для первого покупателя")
+    var firstcount = input.nextInt()
+    println("Введите кол-во продуктов для второго покупателя")
+    var secondcount = input.nextInt()
+    println("Введите товары первого покупателя")
+    for(n in 1..firstcount)
+    {
+        var product = readLine().toString()
+        firstbuyer.add(product)
+    }
+    println("Введите товары второго покупателя")
+    for(n in 1..secondcount)
+    {
+        var product = readLine().toString()
+        secondbuyer.add(product)
+    }
+    println("Товары покупателей")
+    println(firstbuyer)
+    println(secondbuyer)
+    for(obj in secondbuyer)
+    {
+        if(firstbuyer.contains(obj))
+        {
+            println("Общий продукт ${obj}")
+        }
+    }
+    for(obj in firstbuyer)
+    {
+        if(uniqleobj.contains(obj))
+        {
+            println("Первый покупатель имеет ${obj} как особый товар")
+        }
+    }
+
+    for(obj in secondbuyer)
+    {
+        if(uniqleobj.contains(obj))
+        {
+            println("Второй покупатель имеет ${obj} как особый товар")
+        }
+    }
+
+}
+
+fun isNumber(input: String): Boolean {
+    var dotOccurred = 0
+    return input.all { it in integerChars || it == '.' && dotOccurred++ < 1 }
